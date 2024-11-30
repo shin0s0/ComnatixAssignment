@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Task Management</h1>
+    <form id="taskForm">
+      <input type="text" id="title" placeholder="Task Title" required>
+      <input type="text" id="description" placeholder="Description" required>
+      <input type="date" id="due_date" required>
+      <input type="time" id="due_time" required>
+      <select id="status">
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
+
+   <div class="filter-container">
+      <select id="statusFilter" onchange="loadTasks()">
+        <option value="">All Tasks</option>
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+    
+    <div id="taskList"></div>
+  </div>
+
+  <div id="editTaskModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeEditModal()">&times;</span>
+      <h2>Edit Task</h2>
+      <form id="editForm">
+        <input type="text" id="editTitle" placeholder="Task Title" required>
+        <input type="text" id="editDescription" placeholder="Description" required>
+        <input type="date" id="editDueDate" required>
+        <input type="time" id="editDueTime" required>
+        <select id="editStatus">
+          <option value="Pending">Pending</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <button type="submit">Update Task</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
